@@ -1,10 +1,10 @@
 package com.munizdev.dscommerce.dto;
 
 import com.munizdev.dscommerce.entities.Product;
-import jakarta.persistence.Column;
 
 public class ProductDTO {
 
+    private Long id;
     private String name;
     private String description;
     private Double price;
@@ -14,10 +14,15 @@ public class ProductDTO {
     }
 
     public ProductDTO(Product product) {
+        id = product.getId();
         name = product.getName();
         description = product.getDescription();
         price = product.getPrice();
         imgUrl = product.getImgUrl();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

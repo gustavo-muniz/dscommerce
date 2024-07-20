@@ -56,4 +56,8 @@ public class ProductService {
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
     }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
 }

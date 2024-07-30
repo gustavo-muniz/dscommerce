@@ -3,6 +3,9 @@ package com.munizdev.dscommerce.dto;
 import com.munizdev.dscommerce.entities.Product;
 import jakarta.validation.constraints.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ProductDTO {
 
     private Long id;
@@ -19,6 +22,9 @@ public class ProductDTO {
     private Double price;
     private String imgUrl;
 
+    @NotEmpty(message = "Deve ter pelo menos 1 categoria")
+    private List<CategoryDTO> categories = new ArrayList<>();
+
     public ProductDTO() {
     }
 
@@ -28,6 +34,7 @@ public class ProductDTO {
         description = product.getDescription();
         price = product.getPrice();
         imgUrl = product.getImgUrl();
+        categories = product.getCategories().stream().map(CategoryDTO::new).toList();
     }
 
     public Long getId() {
@@ -48,5 +55,9 @@ public class ProductDTO {
 
     public String getImgUrl() {
         return imgUrl;
+    }
+
+    public List<CategoryDTO> getCategories() {
+        return categories;
     }
 }

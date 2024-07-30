@@ -1,6 +1,8 @@
 package com.munizdev.dscommerce.services;
 
+import com.munizdev.dscommerce.dto.CategoryDTO;
 import com.munizdev.dscommerce.dto.ProductMinDTO;
+import com.munizdev.dscommerce.entities.Category;
 import com.munizdev.dscommerce.repositories.ProductRepository;
 import com.munizdev.dscommerce.dto.ProductDTO;
 import com.munizdev.dscommerce.entities.Product;
@@ -66,6 +68,13 @@ public class ProductService {
         entity.setDescription(dto.getDescription());
         entity.setPrice(dto.getPrice());
         entity.setImgUrl(dto.getImgUrl());
+        entity.getCategories().clear();
+        for (CategoryDTO catDTO : dto.getCategories()) {
+            Category cat = new Category();
+            cat.setId(catDTO.getId());
+            cat.setName(catDTO.getName());
+            entity.getCategories().add(cat);
+        }
     }
 
     @Transactional(propagation = Propagation.SUPPORTS)

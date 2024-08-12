@@ -1,6 +1,7 @@
 package com.munizdev.dscommerce.factories;
 
 import com.munizdev.dscommerce.dto.ProductDTO;
+import com.munizdev.dscommerce.dto.ProductMinDTO;
 import com.munizdev.dscommerce.entities.Category;
 import com.munizdev.dscommerce.entities.Product;
 
@@ -15,5 +16,10 @@ public class Factory {
     public static ProductDTO createProductDTO() {
         Product product = createProduct();
         return new ProductDTO(product);
+    }
+
+    public static ProductMinDTO createProductMinDTO() {
+        Product product = createProduct();
+        return new ProductMinDTO(product);
     }
 }
